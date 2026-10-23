@@ -11,7 +11,7 @@ on:
 jobs:
   test:
     name: Build and test on Node ${{ matrix.node }}
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
 
     services:
       redis:
@@ -58,7 +58,7 @@ jobs:
 
   test-bun:
     name: Test bun adapter
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
 
     services:
       redis:
@@ -97,7 +97,7 @@ jobs:
 
   test-e2e:
     name: E2E (Playwright)
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
 
     services:
       redis:
@@ -139,7 +139,7 @@ jobs:
   # artifact (dist/main.js) and probes the internal HTTP surface end to end.
   test-gateway:
     name: Gateway boot smoke
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
 
     steps:
       - uses: actions/checkout@v4
@@ -162,7 +162,7 @@ jobs:
 
   test-ui:
     name: Test UI (no Redis)
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
 
     steps:
       - uses: actions/checkout@v4
@@ -185,7 +185,7 @@ jobs:
 
   test-web:
     name: Test web (MCP + two-hop e2e)
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
 
     services:
       redis:
