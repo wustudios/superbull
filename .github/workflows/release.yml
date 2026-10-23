@@ -19,7 +19,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
         ports:
-          - 6379:6379
+          - 6379
 
     permissions:
       contents: write
@@ -48,7 +48,7 @@ jobs:
         run: pnpm test
         env:
           REDIS_HOST: localhost
-          REDIS_PORT: 6379
+          REDIS_PORT: ${{ job.services.redis.ports['6379'] }}
 
       # pnpm publish skips private packages and rewrites workspace:* deps
       # to the released versions; npm publish would leak workspace:*.
